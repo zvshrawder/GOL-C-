@@ -26,13 +26,17 @@ void gotoxy(int x, int y) {
 	destCoord.X = x;
 	destCoord.Y = y;
 	SetConsoleCursorPosition(hStdout, destCoord);
-	system("CLS");
+
 //	system("clear");
 	//std::cout<<"goto"<<std::endl;
 //	std::cout<<GetConsoleWindow()<<std::endl;
 
 }
 
+void cls()
+{
+	system("CLS");
+}
 void setColor(int foreground)
 {
 
@@ -72,6 +76,7 @@ void setColor(int foreground)
 #else
 void gotoxy(int x, int y){}
 void setColor(){}
+void cls();
 #endif
 
 
@@ -109,6 +114,7 @@ void Board::runGame(int generations)
 	this->generateLivingCells();
 	while(generationCount < generations)
 	{
+		cls();
 		gotoxy(0,0);
 
 		this->printBoard();
@@ -116,6 +122,7 @@ void Board::runGame(int generations)
 		this->advanceGeneration();
 
 	}
+	gotoxy(0,Y+5);
 	setColor(15);//reset color
 
 }

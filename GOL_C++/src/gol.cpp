@@ -39,33 +39,47 @@ void pause()
 void printBoard(int ** arr, int width, int height);
 int main()
 {
+	bool run = true;
 
 
-	//1. get user input on board size
-	int x,y=0;
+	while(run)
+	{
+		//1. get user input on board size
+		int x,y=0;
 
-	cout<<"Hello what dimensions do you want for the game board (Y X)"<<endl;
+		cout<<"Hello what dimensions do you want for the game board (Y X)"<<endl;
 
-	scanf("%d %d",&y,&x);
-
-
+		scanf("%d %d",&y,&x);
 
 
 
-	//2. generate board
-	Board * board = new Board(y, x);
 
-	//3. ask how many generations should be generated
-	int gen =0;
-	cout<<"How many generations do you want?"<<endl;
-	scanf("%d",&gen);
-	cout<<"run game"<<endl;
-	board->runGame(gen);
 
-//	int** out = board->currentGeneration();
-	//printBoard(out,x,y);
+		//2. generate board
+		Board * board = new Board(y, x);
 
-	//4. animate stopping at last generation
+		//3. ask how many generations should be generated
+		int gen =0;
+		cout<<"How many generations do you want?"<<endl;
+		scanf("%d",&gen);
+		board->runGame(gen);
+
+		//	int** out = board->currentGeneration();
+		//printBoard(out,x,y);
+
+		//4. animate stopping at last generation
+
+		printf("Do you want to 'play' again?\nIf so enter Y\n");
+		char c;
+		scanf(" %c",&c);
+		if(c!='y'&&c!='Y')
+		{
+			run = false;
+			cout<<"false"<<endl;
+		}
+		delete board;
+	}
+
 	pause();//stop console from auto closing
 
 return 0;
