@@ -112,9 +112,10 @@ Board::Board(int y, int x) : X(x), Y(y)
 void Board::runGame(int generations)
 {
 	this->generateLivingCells();
+	cls();
 	while(generationCount < generations)
 	{
-		cls();
+
 		gotoxy(0,0);
 
 		this->printBoard();
@@ -124,6 +125,8 @@ void Board::runGame(int generations)
 	}
 	gotoxy(0,Y+5);
 	setColor(15);//reset color
+	current.clear();
+	future.clear();
 
 }
 
