@@ -46,10 +46,15 @@ int main()
 	{
 		//1. get user input on board size
 		int x,y=0;
-
-		cout<<"Hello what dimensions do you want for the game board (Y X)"<<endl;
-
-		scanf("%d %d",&y,&x);
+		bool validEntry = false;
+		cout<<"Hello what dimensions do you want for the game board (Y X)."<<endl;
+		while(!validEntry)
+		{
+			cout<<"Game Board values must be 8integers greater than 0."<<endl;
+			scanf("%d %d",&y,&x);
+			if(x>0 && y>0)
+				validEntry = true;
+		}
 
 
 
